@@ -52,26 +52,20 @@ def getRoutes(request):
     routes = [
         {
 
-            'Endpoint': '/notes/',
-            'method': 'GET',
-            'body': None,
-            'description': 'Returns an array of notes'
-
+            'EP_1_notesList': '/notes/',
+            'EP_2_newNote': 'notes/create',
+            'EP_3_updNote': 'notes/<str:pk>/update',
+            'EP_4_delNote': 'notes/<str:pk>/delete',
+            'EP_5_detailNote': 'notes/<str:pk>',
+            'EP_6_PDF_gen': 'notes/pdf/<str:pk>',
+         
         },
 
-        {
-
-            'Endpoint': '1',
-            'method': '2',
-            'body': 3,
-            'description': '4'
-
-        }
             ]
     return  Response(routes)
 
 @api_view(['GET'])
-def venue_pdf(request, pk):
+def gen_pdf(request, pk):
 
       
     note = Note.objects.get(pk=pk)
