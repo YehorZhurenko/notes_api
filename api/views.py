@@ -3,6 +3,12 @@ from rest_framework.response import Response
 from .serializers import NoteSerializer
 from .models import Note
 
+from django.http import FileResponse, HttpResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+
 @api_view(['GET'])
 def getNotes(request):
 
@@ -63,3 +69,26 @@ def getRoutes(request):
         }
             ]
     return  Response(routes)
+
+@api_view(['GET'])
+def venue_pdf(request, pk):
+
+      
+    note = Note.objects.get(pk=pk)
+    buf = io.BytesIO()
+    c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
+    textob = c.beginText()
+    textob.setTextOrigin(inch, inch)
+    textob.setFont("Helvetica", 14)
+    lines = []
+        
+    lines.append('Body: ' + note.body)
+    lines.append("  ")
+            
+    for line in lines:
+        textob.textLine(line)
+    c.drawText(textob)
+    c.showPage()
+    c.save()
+    buf.seek(0)
+    return FileResponse(buf, as_attachment=True, filename='report_note.pdf')
