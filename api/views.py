@@ -44,7 +44,7 @@ def updateNote(request, pk):
 def deleteNote(request, pk):
     note = Note.objects.get(id = pk)
     note.delete()
-
+    return Response('done') 
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -66,7 +66,6 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def gen_pdf(request, pk):
-
       
     note = Note.objects.get(pk=pk)
     buf = io.BytesIO()
