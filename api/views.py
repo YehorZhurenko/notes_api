@@ -9,6 +9,11 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 
+from rest_framework.views import APIView
+from rest_framework import status, permissions
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework import generics
+
 @api_view(['GET'])
 def getNotes(request):
 
@@ -23,10 +28,34 @@ def getNote(request, pk):
     serializer = NoteSerializer(notes, many = False)
     return Response(serializer.data)
 
+
+class NoteUpload(APIView):
+
+    
+    parser_classes = [MultiPartParser, FormParser]
+    permission_classes = (permissions.AllowAny,)
+
+    """ @api_view(['POST'])
+    def post(self, request, format=None):
+        data = request.data
+        note = Note.objects.create(body=data['body'])
+        serializer = NoteSerializer(note, many = False)
+        return Response(serializer.data) """
+
+    def post(self, request, format=None):   
+
+        print(request.data)
+        serializer = NoteSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else: 
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 @api_view(['POST'])
 def createNote(request):
     data = request.data
-    note = Note.objects.create(body=data['body'])
+    note = Note.objects.create(title=data['title'], body=data['body'], grade=data['grade'])
     serializer = NoteSerializer(note, many = False)
     return Response(serializer.data)
 
