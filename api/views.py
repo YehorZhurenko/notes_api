@@ -248,7 +248,7 @@ def bio_gen(request, pk):
     os.remove(str(BASE_DIR) + "/media/posts/pic2.jpg")
     os.remove(str(BASE_DIR) + "/media/posts/pic3.jpg")
 
-    return FileResponse(open(str(BASE_DIR) + "/media/posts/io.pdf", 'rb'))
+    return FileResponse(open(str(BASE_DIR) + "/media/posts/Bio.pdf", 'rb'))
    
 @api_view(['GET'])
 def post_gen(request, pk):
