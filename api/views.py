@@ -369,12 +369,12 @@ def temp_gen(request, pk):
     #Logo
     pdf.set_xy(15, 20)
     pdf.multi_cell(w=80, h=63, border=0, )
-    pdf.image(str(BASE_DIR) + "\media\posts\pic1.jpg", 30,19, w=65, h=65)
+    pdf.image(str(BASE_DIR) + "/media/posts/pic1.jpg", 30,19, w=65, h=65)
 
-    pdf.output(str(BASE_DIR) + "\media\posts\Temp.pdf")
+    pdf.output(str(BASE_DIR) + "/media/posts/Temp.pdf")
 
-    os.remove(str(BASE_DIR) + "\media\posts\pic1.jpg")
-    os.remove(str(BASE_DIR) + "\media\posts\pic2.jpg")
-    os.remove(str(BASE_DIR) + "\media\posts\pic3.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic1.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic2.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic3.jpg")
 
-    return FileResponse(open(str(BASE_DIR) + "\media\posts\Temp.pdf", 'rb'))
+    return FileResponse(open(str(BASE_DIR) + "/media/posts/Temp.pdf", 'rb'))
