@@ -350,9 +350,9 @@ def temp_gen(request, pk):
     pdf.set_xy(115,75)
     pdf.multi_cell(w=22+x, h=6+y, border=0, txt = numb1)
     pdf.set_xy(140+x,75)
-    pdf.multi_cell(w=22+x, h=6+y, border=0, txt = numb1)
+    pdf.multi_cell(w=22+x, h=6+y, border=0, txt = numb2)
     pdf.set_xy(165+2*x,75)
-    pdf.multi_cell(w=22+x, h=6+y, border=0, txt = numb1)
+    pdf.multi_cell(w=22+x, h=6+y, border=0, txt = numb3)
 
     #Descr_lover
 
