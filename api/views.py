@@ -93,9 +93,9 @@ def getRoutes(request):
     routes = [
         {
 
-            'BIO пофиль': '/notes/post_gen/<int:pk>',
+            'Статья': '/notes/post_gen/<int:pk>',
             'На подобии визитки ADA': '/notes/temp_gen/<int:pk>',
-            'Статья': '/notes/bio_gen/<int:pk>',
+            'BIO пофиль': '/notes/bio_gen/<int:pk>',
                      
         },
 
