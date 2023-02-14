@@ -149,13 +149,13 @@ def gen_pdf_res(request, pk):
             
     c.rotate(180)
 
-    c.drawInlineImage(str(BASE_DIR) + "\media\posts\pic1.jpg", x=-250, y=-450, width = 200, height = 200)
+    c.drawInlineImage(str(BASE_DIR) + "/media/posts/pic1.jpg", x=-250, y=-450, width = 200, height = 200)
 
-    c.drawInlineImage(str(BASE_DIR) + "\media\posts\pic2.jpg", x=-300, y=-425, width = 70, height = 70)
-    c.drawInlineImage(str(BASE_DIR) + "\media\posts\pic2.jpg", x=-230, y=-425, width = 70, height = 70)
-    c.drawInlineImage(str(BASE_DIR) + "\media\posts\pic2.jpg", x=-160, y=-425, width = 70, height = 70)
-    c.drawInlineImage(str(BASE_DIR) + "\media\posts\pic2.jpg", x=-90, y=-425, width = 70, height = 70)
-    c.drawInlineImage(str(BASE_DIR) + "\media\posts\pic2.jpg", x=-370, y=-425, width = 70, height = 70)
+    c.drawInlineImage(str(BASE_DIR) + "/media/posts/pic2.jpg", x=-300, y=-425, width = 70, height = 70)
+    c.drawInlineImage(str(BASE_DIR) + "/media/posts/pic2.jpg", x=-230, y=-425, width = 70, height = 70)
+    c.drawInlineImage(str(BASE_DIR) + "/media/posts/pic2.jpg", x=-160, y=-425, width = 70, height = 70)
+    c.drawInlineImage(str(BASE_DIR) + "/media/posts/pic2.jpg", x=-90, y=-425, width = 70, height = 70)
+    c.drawInlineImage(str(BASE_DIR) + "/media/posts/pic2.jpg", x=-370, y=-425, width = 70, height = 70)
 
     c.restoreState()
 
@@ -163,9 +163,9 @@ def gen_pdf_res(request, pk):
     c.save()
     buf.seek(0)
 
-    os.remove(str(BASE_DIR) + "\media\posts\pic1.jpg")
-    os.remove(str(BASE_DIR) + "\media\posts\pic2.jpg")
-    os.remove(str(BASE_DIR) + "\media\posts\pic3.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic1.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic2.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic3.jpg")
 
     return FileResponse(buf, as_attachment=True, filename='report_note.pdf')
 
@@ -227,8 +227,8 @@ def bio_gen(request, pk):
     pdf.set_xy(20, 145)
     pdf.set_font("arial", "", 14)
     pdf.multi_cell(w=170, h=10, border=0,  txt = about, align = "M")
-    pdf.image(str(BASE_DIR) + "\media\icons\TW_logo.png", 90,250, w=15, h=15)
-    pdf.image(str(BASE_DIR) + "\media\icons\FB_logo.png", 102,260, w=13, h=13)
+    pdf.image(str(BASE_DIR) + "/media/icons/TW_logo.png", 90,250, w=15, h=15)
+    pdf.image(str(BASE_DIR) + "/media/icons/FB_logo.png", 102,260, w=13, h=13)
 
     #Contact
     pdf.set_font("arial", "", 14)
@@ -240,15 +240,15 @@ def bio_gen(request, pk):
 
     #Icon
     im_size = 1.4
-    pdf.image(str(BASE_DIR) + "\media\posts\pic1.jpg", 130,25, w=45*im_size, h=50*im_size)
+    pdf.image(str(BASE_DIR) + "/media/posts/pic1.jpg", 130,25, w=45*im_size, h=50*im_size)
 
-    pdf.output(str(BASE_DIR) + "\media\posts\Bio.pdf")
+    pdf.output(str(BASE_DIR) + "/media/posts/Bio.pdf")
 
-    os.remove(str(BASE_DIR) + "\media\posts\pic1.jpg")
-    os.remove(str(BASE_DIR) + "\media\posts\pic2.jpg")
-    os.remove(str(BASE_DIR) + "\media\posts\pic3.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic1.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic2.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic3.jpg")
 
-    return FileResponse(open(str(BASE_DIR) + "\media\posts\Bio.pdf", 'rb'))
+    return FileResponse(open(str(BASE_DIR) + "/media/posts/io.pdf", 'rb'))
    
 @api_view(['GET'])
 def post_gen(request, pk):
@@ -305,13 +305,13 @@ def post_gen(request, pk):
     pdf.set_xy(32, 270)
     pdf.multi_cell(w=150, h=6, border=0, align = "L", txt = text6)
 
-    pdf.output(str(BASE_DIR) + "\media\posts\Post.pdf")
+    pdf.output(str(BASE_DIR) + "/media/posts/Post.pdf")
 
-    os.remove(str(BASE_DIR) + "\media\posts\pic1.jpg")
-    os.remove(str(BASE_DIR) + "\media\posts\pic2.jpg")
-    os.remove(str(BASE_DIR) + "\media\posts\pic3.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic1.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic2.jpg")
+    os.remove(str(BASE_DIR) + "/media/posts/pic3.jpg")
 
-    return FileResponse(open(str(BASE_DIR) + "\media\posts\Post.pdf", 'rb'))
+    return FileResponse(open(str(BASE_DIR) + "/media/posts/Post.pdf", 'rb'))
     
 
 @api_view(['GET'])
